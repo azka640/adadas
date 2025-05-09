@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Halaman Pembayaran</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .form-container {
+      max-width: 400px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .form-container h2 {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .form-container label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+
+    .form-container input,
+    .form-container select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .form-container button {
+      width: 100%;
+      padding: 10px;
+      background: #000;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .form-container button:hover {
+      background: #333;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Pembayaran</h1>
+  </header>
+
+  <section class="form-container">
+    <h2>Isi Data Pembelian</h2>
+    <form id="formPembayaran">
+      <label for="nama">Nama Lengkap</label>
+      <input type="text" id="nama" name="nama" required>
+
+      <label for="alamat">Alamat Pengiriman</label>
+      <input type="text" id="alamat" name="alamat" required>
+
+      <label for="nohp">Nomor HP / WhatsApp</label>
+      <input type="tel" id="nohp" name="nohp" required>
+
+      <label for="produk">Pilih Produk</label>
+      <select id="produk" name="produk" required>
+        <option value="Adidas RunFalcon">Adidas RunFalcon</option>
+        <option value="Jaket Cutout Fashion Archive">Jaket Cutout Fashion Archive</option>
+        <option value="Sepatu Rapidmove 2">Sepatu Rapidmove 2</option>
+      </select>
+
+      <button type="submit">Lanjutkan Pembayaran</button>
+    </form>
+  </section>
+
+  <script>
+    document.getElementById("formPembayaran").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const nama = document.getElementById("nama").value;
+      const alamat = document.getElementById("alamat").value;
+      const nohp = document.getElementById("nohp").value;
+      const produk = document.getElementById("produk").value;
+
+      const pesan = `Halo! Saya ingin beli:\n\nProduk: ${produk}\nNama: ${nama}\nAlamat: ${alamat}\nNo HP: ${nohp}`;
+      const url = `https://wa.me/6285215923997?text=${encodeURIComponent(pesan)}`;
+
+      window.location.href = url;
+    });
+  </script>
+</body>
+</html>
